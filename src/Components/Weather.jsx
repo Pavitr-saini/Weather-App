@@ -63,7 +63,7 @@ function Weather() {
             <img src="/src/assets/search.png" alt="Search" className="w-5 h-5 sm:w-6 sm:h-6 object-contain invert" />
           </button>
         </div>
-        {error && <p className="text-red-500 text-sm sm:text-base mt-3 ml-4 text-left animate-fadeIn font-medium drop-shadow-md">{error}</p>}
+        {error && <p className="text-red-400 text-sm sm:text-base mt-3 ml-4 text-left animate-fadeIn font-medium drop-shadow-md">{error}</p>}
       </div>
       
       {data ? (
