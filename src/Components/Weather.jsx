@@ -26,7 +26,8 @@ function Weather() {
     setError(null)
   }
   
-  const API_Key ="458d5a04fd73a9ae05df0b44edd2c4e4"
+  // const API_Key ="458d5a04fd73a9ae05df0b44edd2c4e4"
+  const apiKey = import.meta.env.VITE_API_KEY;
   
   const fetchWeather = async (cityQuery) => {
     const finalQuery = typeof cityQuery === 'string' ? cityQuery : search;
@@ -39,7 +40,7 @@ function Weather() {
     try {
       setIsLoading(true)
       setError(null)
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${finalQuery}&appid=${API_Key}`);
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${finalQuery}&appid=${apiKey}`);
       const jsonData = await response.json();
       
       if(jsonData.cod === "404" || jsonData.cod === "400"){
