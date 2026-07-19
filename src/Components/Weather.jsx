@@ -66,7 +66,7 @@ function Weather() {
       navigator.geolocation.getCurrentPosition(async (position) => {
         try {
           setError(null);
-          const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${API_Key}`);
+          const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}`);
           const jsonData = await response.json();
           if(jsonData.cod === "404" || jsonData.cod === "400"){
             setError("Location not found");
