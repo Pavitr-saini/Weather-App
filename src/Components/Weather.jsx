@@ -11,9 +11,6 @@ function Weather({ onWeatherChange }) {
   useEffect(() => {
     const savedSearches = JSON.parse(localStorage.getItem('recentSearches'));
     if (savedSearches) setRecentSearches(savedSearches);
-    
-    // Fetch default city on mount
-    fetchWeather("London");
   }, []);
 
   // Update background theme in parent App.jsx when weather data changes
@@ -372,16 +369,23 @@ function Weather({ onWeatherChange }) {
           </div>
         </div>
       ) : (
-        <div className='flex flex-col items-center justify-center py-20 text-center w-full animate-fadeIn'>
-          <div className="w-24 h-24 mb-6 opacity-60 bg-white/5 border border-white/10 rounded-full flex items-center justify-center shadow-inner hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer animate-float">
-             <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 text-white animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div className='flex flex-col items-center justify-center py-16 text-center w-full animate-fadeIn'>
+          <div className="w-24 h-24 mb-6 bg-white/5 border border-white/10 rounded-full flex items-center justify-center shadow-inner hover:scale-105 active:scale-95 transition-all duration-500 cursor-pointer animate-float relative group">
+             <div className="absolute inset-0 bg-indigo-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+             <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 text-indigo-200 animate-pulse relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
             </svg>
           </div>
           <h2 className="text-3xl font-extrabold tracking-wide mb-2 text-white">Weather Dashboard</h2>
-          <p className="text-sm text-white/60 font-medium max-w-[280px] leading-relaxed mx-auto">
-            Search for a city or click the geolocation icon to display advanced current metrics.
+          <p className="text-sm text-white/50 font-medium max-w-[280px] leading-relaxed mx-auto mb-5">
+            Enter a city name above or use your current location to reveal comprehensive weather analytics.
           </p>
+          <div className="flex items-center gap-1.5 text-[10px] font-bold text-white/40 uppercase tracking-widest bg-white/5 border border-white/5 px-4 py-1.5 rounded-full select-none">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+            Secure OpenWeather API Connection
+          </div>
         </div>
       )}
     </div>
